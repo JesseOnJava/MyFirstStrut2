@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+<!-- 	  <constant name="struts.enable.DynamicMethodInvocation" value="false"/> -->
+<!--  	  <constant name="struts.devMode" value="true"/> -->
+
+	<package name="myPackage" namespace="/myNamespace" extends="struts-default">
+	
+	
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="error" />
+		</global-exception-mappings>
+		
+		
+
+		<action name="add" class="com.action.SayHiAction" method="add">
+			<result name="success">/show.jsp</result>
+			<result name="add">/listAll.jsp</result>
+
+		</action>
+		
+		<action name="update"   class="com.action.SayHiAction"  method="update">
+	        <result name="success">/listAll.jsp</result>
+            <result name="input">/form.jsp</result>
+		</action>
+		
+		<action name="getOne"   class="com.action.SayHiAction"  method="getOne">
+	        <result name="success">/emp/update_emp_input.jsp</result>
+            <result name="input">/form.jsp</result>
+		</action>	
+<!-- 			<action name="Crud_*" class="example.Crud" method="{1}"> -->
+<!-- 			</action> -->
+		<action name="myAction_*"   class="com.action.SayHiAction"  method="{1}">
+	        <result name="success">/emp/{1}.jsp</result>
+            <result name="input">/form.jsp</result>
+		</action>
+		
+
+
+	</package>
+	
+	<package name="emp" namespace="/emp" extends="struts-default">
+
+	    <action name="addEmp"   class="com.emp.controller.EmpAction"  method="add">
+	        <result name="success">/listAll.jsp</result>
+            <result name="input">/form.jsp</result>
+		</action>
+		
+		<action name="getOne_For_Update"   class="com.emp.controller.EmpAction"  method="add">
+	        <result name="success">/listAll.jsp</result>
+            <result name="input">/form.jsp</result>
+		</action>
+		<action name="deleteEmp"   class="com.emp.controller.EmpAction"  method="add">
+	        <result name="success">/listAll.jsp</result>
+            <result name="input">/form.jsp</result>
+		</action>
+	</package>
+	
+	<package name="default" extends="json-default">
+	
+<!-- 	<interceptors> -->
+<!--         <interceptor-stack name="defaultStack"> -->
+<!--             <interceptor-ref name="json"> -->
+<!--                 <param name="enableSMD">true</param> -->
+<!--             </interceptor-ref> -->
+<!--         </interceptor-stack> -->
+<!--     </interceptors> -->
+
+<!--     <default-interceptor-ref name="defaultStack" /> -->
+	
+	
+	    <action name="angularAction" class="com.action.AngularAction">
+	    	<result type="json"/>
+<!-- 	        <result type="json"> -->
+<!-- 	          <param name="root">empVO</param> -->
+<!-- 	          <param name="excludeNullProperties">true</param> -->
+<!-- 	          <param name="noCache">true</param> -->
+<!-- 	        </result> -->
+	    </action>
+	</package>
+
+</struts>

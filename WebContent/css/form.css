@@ -1,0 +1,10 @@
+@CHARSET "BIG5";
+ div.block1{ 
+ background:blue; 
+}
+ div.block2{ 
+ background:red; 
+}
+ div.block3{ 
+ background:green; 
+}
